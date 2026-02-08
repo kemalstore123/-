@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generator QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h2>QR Code Profil Siswa</h2>
+    <div id="qrcode"></div>
+
+    <script>
+        var url = "https://namakamu.github.io/profilsiswa"; // GANTI DENGAN LINK WEB
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: url,
+            width: 200,
+            height: 200
+        });
+    </script>
+</body>
+</html>

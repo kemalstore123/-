@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kartu OSIS Digital</title>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to right,#1e3c72,#2a5298);
+    font-family:Arial, sans-serif;
+}
+
+.card{
+    width:400px;
+    height:230px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+    position:relative;
+}
+
+.header{
+    background:#003366;
+    color:white;
+    padding:10px;
+    text-align:center;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.content{
+    display:flex;
+    padding:15px;
+}
+
+.photo{
+    width:100px;
+    height:120px;
+    border:3px solid #003366;
+    border-radius:10px;
+    object-fit:cover;
+}
+
+.info{
+    margin-left:15px;
+    font-size:14px;
+}
+
+.info p{
+    margin:6px 0;
+}
+
+.footer{
+    position:absolute;
+    bottom:5px;
+    right:10px;
+    font-size:12px;
+    color:gray;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        KARTU OSIS
+    </div>
+
+    <div class="content">
+        <img id="foto" class="photo" src="">
+        <div class="info">
+            <p id="nama"></p>
+            <p id="kelas"></p>
+            <p id="sekolah"></p>
+            <p id="sekbid"></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        Scan QR untuk verifikasi
+    </div>
+</div>
+
+<script>
+const dataSiswa = [
+    {
+        id: "1",
+        foto: "foto1.jpg",
+        nama: "Andi Saputra",
+        kelas: "XI RPL 2",
+        sekolah: "SMK Negeri 1",
+        sekbid: "Sekbid 3 - Kedisiplinan"
+    },
+    {
+        id: "2",
+        foto: "foto2.jpg",
+        nama: "Budi Santoso",
+        kelas: "XI RPL 1",
+        sekolah: "SMK Negeri 1",
+        sekbid: "Sekbid 5 - Olahraga"
+    }
+];
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const siswa = dataSiswa.find(s => s.id === id);
+
+if (siswa) {
+    document.getElementById("foto").src = siswa.foto;
+    document.getElementById("nama").innerText = "Nama: " + siswa.nama;
+    document.getElementById("kelas").innerText = "Kelas: " + siswa.kelas;
+    document.getElementById("sekolah").innerText = "Sekolah: " + siswa.sekolah;
+    document.getElementById("sekbid").innerText = "Sekbid: " + siswa.sekbid;
+} else {
+    document.body.innerHTML = "<h2 style='color:white'>Data tidak ditemukan</h2>";
+}
+</script>
+
+</body>
+</html>
